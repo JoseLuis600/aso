@@ -26,10 +26,13 @@ case $opcion in
     clear
     echo "Escriba el nombre"
     read nombre
+    clear
     echo "Escriba la direccion"
     read direccion
+    clear
     echo "Escriba el numero de telefono"
     read telefono
+    clear
     echo "$nombre;$direccion;$telefono" >> lista.txt
   ;;
 
@@ -72,7 +75,13 @@ case $opcion in
     if [[ $lista = 1 ]]; then
       sort lista.txt
     elif [[ $lista = 2 ]]; then
-      sort lista.txt > lista.txt
+      sort lista.txt > lista_ordenada.txt
+      cat lista_ordenada.txt > lista.txt
+      rm lista_ordenada.txt
     fi
+  ;;
+
+  5)
+    rm lista.txt
   ;;
 esac
