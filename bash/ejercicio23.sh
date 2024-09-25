@@ -19,6 +19,12 @@ else
       echo "$item es un directorio"
     elif [[ -f $item ]]; then
       echo "$item es un fichero"
+    elif [[ -c $item ]]; then
+      echo "$item es un archivo de caracter especial"
+    elif [[ -b $item ]]; then
+      echo "$item es un archivo especial de bloque"
+    elif [[ -L $item ]]; then
+      echo "$item es un enlace simbolico"
     fi
   done
   conteo=$(ls -1 $ruta | wc -l)
