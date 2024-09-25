@@ -15,11 +15,11 @@ elif [[ ! -d $ruta ]];then
   exit
 else
   listado=$(ls $ruta)
-  for item in $listado/*; do
+  for item in "$ruta"/*; do
     if [[ -d $item ]]; then
-      echo "$listado es un directorio"
+      echo "$item es un directorio"
     elif [[ -f $item ]]; then
-      echo "$listado es un fichero"
+      echo "$item es un fichero"
     fi
   done
   conteo=$(ls -1 $ruta | wc -l)
