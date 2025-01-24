@@ -11,6 +11,6 @@ foreach ($dep in $departamentos) {
 }
 
 foreach ($emp in $usuarios) {
-    New-ADUser -Name "$($emp.nombre) $($emp.apellido)" -Path "OU=$($emp.departamento),OU=Empresa,DC=ASO,DC=LOCAL" -AccountPassword (ConvertTo-SecureString "hola01?" -AsPlainText -Force) -GivenName $emp.nombre -Surname $emp.apellido -ChangePasswordAtLogon $false -Enabled $true
-    Add-ADGroupMember -Identity $emp.departamento -Members "$($emp.nombre) $($emp.apellido)"
+    New-ADUser -Name "$($emp.nombre) $($emp.apellido)" -Path "OU=$($emp.departamento),OU=Empresa,DC=ASO,DC=LOCAL" -SamAccountName "$($emp.nombre.ToLower()).$($emp.apellido.ToLower())" -AccountPassword (ConvertTo-SecureString "aso2025." -AsPlainText -Force) -GivenName $emp.nombre -Surname $emp.apellido -ChangePasswordAtLogon $false -Enabled $true
+    Add-ADGroupMember -Identity $emp.departamento -Members "$($emp.nombre).$($emp.apellido)"
 }
